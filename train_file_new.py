@@ -199,6 +199,8 @@ def main(args):
 
     print("Start training")
     start_time = time.time()
+    epoch_start_time = time.time()
+    batch_timer = time.time()
     for epoch in range(args.start_epoch, args.epochs):
         if args.distributed:
             train_sampler.set_epoch(epoch)
@@ -221,6 +223,7 @@ def main(args):
 
     total_time = time.time() - start_time
     total_time_str = str(datetime.timedelta(seconds=int(total_time)))
+    picture_time = (time.time() - batch_timer) / len(train_loader)
     print('Training time {}'.format(total_time_str))
 
 
