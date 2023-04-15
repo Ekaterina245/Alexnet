@@ -1,7 +1,7 @@
 import datetime
 import os
 import time
-
+import json
 import torch
 import torch.utils.data
 from torch import nn
@@ -225,6 +225,10 @@ def main(args):
     total_time_str = str(datetime.timedelta(seconds=int(total_time)))
     picture_time = (time.time() - batch_timer) / len(train_loader)
     print('Training time {}'.format(total_time_str))
+    
+    metrics = {"time": total_time}
+    with open('new_timing_info.json', 'w') as f:
+        json.dump(metrics, f, indent=1)
 
 
 def get_args_parser(add_help=True):
