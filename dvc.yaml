@@ -1,0 +1,5 @@
+stages:
+  train_file_new:
+    cmd: python train_file_new.py --img 342 --batch 32 --epochs 2
+    metrics:
+    - new_timing_info.json
