@@ -223,6 +223,12 @@ def main(args):
     total_time_str = str(datetime.timedelta(seconds=int(total_time)))
     print('Training time {}'.format(total_time_str))
 
+    with open('dvc2.json', 'w') as f:
+        json.dump({
+            'start_time': total_time,
+        }, f)
+
+    return results
 
 def get_args_parser(add_help=True):
     import argparse
